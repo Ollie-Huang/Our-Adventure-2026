@@ -89,3 +89,20 @@ textarea:focus {
     margin-top: 18px;
     text-align: center;
 }
+
+.form-group[hidden] {
+    display: none;
+}
+
+.submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.form-status-error {
+    color: #a74646;
+}
+
+.form-status-success {
+    color: #58765a;
+}
