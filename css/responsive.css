@@ -1,0 +1,20 @@
+@media (max-width:768px){
+
+.details-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media (max-width: 600px) {
+    .radio-group {
+        flex-direction: column;
+    }
+
+    #transportation,
+    #rsvp {
+        padding: 70px 0;
+    }
+}
