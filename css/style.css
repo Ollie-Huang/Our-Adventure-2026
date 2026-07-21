@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: "Noto Serif TC", serif;
+    background-color: #F8F6F2;
+    color: #3D3D3D;
+    line-height: 1.8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
