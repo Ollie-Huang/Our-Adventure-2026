@@ -32,11 +32,11 @@
 <!-- v0.2 website framework -->
 <header id="hero">
 
-    <p>You are my greatest adventure.</p>
+    <h1>黃冠禎 & 李玟慧</h1>
 
-    <h1>Guan-Zhen Huang & Wen-Hui Li</h1>
- 
-    <p>你是我這輩子最大的冒險</p>
+    <p>Wedding Invitation</p>
+
+    <p>2026 年 12 月 12 日</p>
 
 </header>
 
@@ -45,11 +45,131 @@
 </section>
 
 <section id="details">
-    婚禮資訊 DETAILS
+
+    <h2>Wedding Details</h2>
+
+    <div class="details-grid">
+
+        <div class="detail-item">
+            <h3>日期</h3>
+            <p>2026 年 11 月 28 日（六）</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>迎賓</h3>
+            <p>17:30</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>開席</h3>
+            <p>18:00</p>
+        </div>
+
+        <div class="detail-item">
+            <h3>地點</h3>
+            <p>（先填宴客地點）</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="transportation">
+    <div class="section-container">
+        <p class="section-label">Location</p>
+        <h2>婚宴地點</h2>
+
+        <div class="location-content">
+            <h3>宴客地點名稱</h3>
+            <p>請在這裡填寫宴客地址</p>
+
+            <a
+                class="map-link"
+                href="請貼上你的 Google 地圖網址"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                查看 Google 地圖
+            </a>
+        </div>
+    </div>
 </section>
 
 <section id="rsvp">
-    出席回函 RSVP
+    <div class="section-container">
+        <p class="section-label">RSVP</p>
+        <h2>出席意願調查</h2>
+        <p class="section-description">
+            請協助填寫以下資訊，讓我們能為您準備最合適的安排。
+        </p>
+
+        <form id="rsvp-form">
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="請輸入您的姓名"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>是否出席</label>
+
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input
+                            type="radio"
+                            name="attendance"
+                            value="出席"
+                            required
+                        >
+                        <span>欣然出席</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input
+                            type="radio"
+                            name="attendance"
+                            value="不出席"
+                        >
+                        <span>不克出席</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="guest-count">出席人數</label>
+                <select id="guest-count" name="guestCount">
+                    <option value="">請選擇人數</option>
+                    <option value="1">1 位</option>
+                    <option value="2">2 位</option>
+                    <option value="3">3 位</option>
+                    <option value="4">4 位</option>
+                    <option value="5">5 位</option>
+                    <option value="6">6 位以上</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">備註</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="飲食需求、兒童座椅或其他需要協助的事項"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">
+                送出回覆
+            </button>
+
+            <p id="form-status" aria-live="polite"></p>
+        </form>
+    </div>
 </section>
 
 <footer>
