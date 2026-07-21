@@ -1,0 +1,91 @@
+#rsvp-form {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group > label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d8d1c9;
+    border-radius: 0;
+    background-color: #ffffff;
+    color: #3d3935;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #9a8068;
+    outline: none;
+}
+
+.radio-group {
+    display: flex;
+    gap: 14px;
+}
+
+.radio-option {
+    flex: 1;
+    cursor: pointer;
+}
+
+.radio-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.radio-option span {
+    display: block;
+    padding: 13px 16px;
+    border: 1px solid #d8d1c9;
+    text-align: center;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.radio-option input:checked + span {
+    border-color: #9a8068;
+    background-color: #f5f1eb;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #4c4641;
+    background-color: #4c4641;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    letter-spacing: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.submit-button:hover {
+    opacity: 0.82;
+}
+
+#form-status {
+    min-height: 28px;
+    margin-top: 18px;
+    text-align: center;
+}
