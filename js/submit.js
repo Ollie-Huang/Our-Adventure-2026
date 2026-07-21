@@ -1,5 +1,5 @@
 const RSVP_ENDPOINT =
-    "https://script.google.com/macros/s/AKfycbxaFtOOCdol4IKfQ3kiRi8DR5s4cFlQbTZMn23SZRfJ/dev";
+    "https://script.google.com/macros/s/AKfycbzY9P-BEl9MaDTNGeGl-qD9VzNXYXXLEz2N9kkQscPwtIMs16rCUuKn4W7vpyUDFecdOw/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#rsvp-form");
