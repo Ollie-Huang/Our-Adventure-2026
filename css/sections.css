@@ -1,0 +1,30 @@
+/* =========================
+   Hero
+========================= */
+
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background-color: #F8F6F2;
+}
+
+#hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4rem;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin: 8px 0;
+}
