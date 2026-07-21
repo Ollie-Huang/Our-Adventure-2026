@@ -38,4 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateAttendanceFields();
+    formResetSetup();
+
+function formResetSetup() {
+    const form = document.querySelector("#rsvp-form");
+
+    form.addEventListener("rsvp-form-reset", () => {
+        updateAttendanceFields();
+    });
+}
 });
