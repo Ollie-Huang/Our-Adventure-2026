@@ -176,3 +176,42 @@
     padding: 90px 0;
     background-color: #ffffff;
 }
+
+/* =========================
+   Privacy
+========================= */
+
+.privacy-note {
+    margin: -20px auto 35px;
+    color: #827970;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* =========================
+   Footer
+========================= */
+
+#footer {
+    padding: 60px 20px;
+    background-color: #4c4641;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-names {
+    margin-bottom: 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+#footer > p:not(.footer-names) {
+    margin: 6px 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+}
+
+.footer-year {
+    letter-spacing: 3px;
+}
