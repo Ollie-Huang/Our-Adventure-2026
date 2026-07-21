@@ -1,9 +1,12 @@
+const RSVP_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbxaFtOOCdol4IKfQ3kiRi8DR5s4cFlQbTZMn23SZRfJ/dev";
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#rsvp-form");
     const status = document.querySelector("#form-status");
     const submitButton = form.querySelector(".submit-button");
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         status.textContent = "";
@@ -25,19 +28,48 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        submitButton.disabled = true;
-        submitButton.textContent = "檢查中…";
+        if (
+            !RSVP_ENDPOINT.startsWith("https://script.google.com/") ||
+            !RSVP_ENDPOINT.endsWith("/exec")
+        ) {
+            showStatus("尚未設定正確的表單接收網址。", "error");
+            return;
+        }
 
-        window.setTimeout(() => {
+        setSubmitting(true);
+
+        try {
+            await fetch(RSVP_ENDPOINT, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            });
+
             showStatus(
-                "資料格式確認完成。下一步接上資料儲存後，才會正式送出回覆。",
+                "謝謝您的回覆，我們已收到您的出席資訊。",
                 "success"
             );
 
-            submitButton.disabled = false;
-            submitButton.textContent = "送出回覆";
-        }, 600);
+            form.reset();
+            form.dispatchEvent(
+                new CustomEvent("rsvp-form-reset")
+            );
+        } catch (error) {
+            showStatus(
+                "目前無法送出，請確認網路連線後再試一次。",
+                "error"
+            );
+        } finally {
+            setSubmitting(false);
+        }
     });
+
+    function setSubmitting(isSubmitting) {
+        submitButton.disabled = isSubmitting;
+        submitButton.textContent = isSubmitting
+            ? "送出中…"
+            : "送出回覆";
+    }
 
     function showStatus(message, type) {
         status.textContent = message;
