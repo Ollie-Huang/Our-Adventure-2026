@@ -2,6 +2,10 @@
    Hero
 ========================= */
 
+/* =========================
+   Hero
+========================= */
+
 #hero {
     min-height: 100vh;
 
@@ -11,21 +15,20 @@
     align-items: center;
 
     text-align: center;
-
-    padding: 40px 20px;
-
     color: white;
 
     background:
         linear-gradient(
-            rgba(0,0,0,.25),
-            rgba(0,0,0,.25)
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.20)
         ),
         url("../images/hero.jpg");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    padding: 20px;
 }
 
 #hero h1 {
@@ -33,11 +36,143 @@
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 600;
     letter-spacing: 2px;
-    margin-bottom: 20px;
+
+    margin-bottom: 12px;
 }
 
 #hero p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    margin: 6px 0;
     letter-spacing: 1px;
-    margin: 10px 0;
+}
+
+.hero-content {
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+
+    padding: 40px 50px;
+
+    border-radius: 20px;
+
+    max-width: 700px;
+}
+
+/* =========================
+   Wedding Details
+========================= */
+
+#details {
+    padding: 90px 20px;
+    background: #ffffff;
+}
+
+#details h2 {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.details-grid {
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 40px;
+}
+
+.detail-item {
+    text-align: center;
+}
+
+.detail-item h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.detail-item p {
+    color: #666;
+}
+
+/* =========================
+   Shared Section
+========================= */
+
+.section-container {
+    width: min(100% - 40px, 760px);
+    margin: 0 auto;
+}
+
+.section-label {
+    margin-bottom: 8px;
+    color: #9a8068;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#transportation h2,
+#rsvp h2 {
+    margin-bottom: 20px;
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-weight: 500;
+    text-align: center;
+}
+
+.section-description {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    color: #6e6862;
+    text-align: center;
+}
+
+/* =========================
+   Location
+========================= */
+
+#transportation {
+    padding: 90px 0;
+    background-color: #f5f1eb;
+}
+
+.location-content {
+    text-align: center;
+}
+
+.location-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+.location-content p {
+    margin-bottom: 28px;
+    color: #6e6862;
+}
+
+.map-link {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid #4c4641;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.map-link:hover {
+    background-color: #4c4641;
+    color: #ffffff;
+}
+
+/* =========================
+   RSVP
+========================= */
+
+#rsvp {
+    padding: 90px 0;
+    background-color: #ffffff;
 }
