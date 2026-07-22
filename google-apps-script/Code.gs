@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "1suYZZqmiuhnDnjTQOEkdV4Srh38sFP1MU63_1XWFdHI";
+const SPREADSHEET_ID = "請貼上你目前的試算表ID";
 const SHEET_NAME = "RSVP";
 const DEADLINE = new Date("2026-10-12T15:59:59Z");
 

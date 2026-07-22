@@ -17,6 +17,10 @@
         scroll-padding-top: var(--nav-height);
     }
 
+    body {
+        font-size: 0.88rem;
+    }
+
     .site-nav {
         top: 0;
         width: 100%;
@@ -99,19 +103,63 @@
         font-size: clamp(0.64rem, 2.8vw, 0.85rem);
     }
 
-    #about,
-    #details,
-    #transportation,
+    #about {
+        min-height: calc(100svh - var(--nav-height));
+        padding-top: 32px;
+        padding-bottom: 36px;
+    }
+
+    #details {
+        min-height: calc(100svh - var(--nav-height));
+        padding-top: 40px;
+        padding-bottom: 48px;
+    }
+
+    #transportation {
+        padding-top: 52px;
+        padding-bottom: 52px;
+    }
+
     #rsvp {
-        padding-top: 76px;
-        padding-bottom: 76px;
+        padding-top: 42px;
+        padding-bottom: 58px;
+    }
+
+    .section-label {
+        margin-bottom: 6px;
+        font-size: 0.76rem;
+    }
+
+    #about h2 {
+        font-size: clamp(1.35rem, 6vw, 1.8rem);
+    }
+
+    #details h2,
+    #rsvp h2 {
+        font-size: clamp(1.55rem, 7vw, 2rem);
     }
 
     .about-copy {
-        margin: 30px auto 50px;
-        font-size: 0.94rem;
-        line-height: 2;
+        margin: 16px auto 20px;
+        font-size: 0.8rem;
+        line-height: 1.75;
         text-align: center;
+    }
+
+    .about-copy p {
+        margin-bottom: 5px;
+    }
+
+    .countdown-heading {
+        margin-bottom: 9px;
+    }
+
+    .countdown-heading p {
+        font-size: 0.82rem;
+    }
+
+    .countdown-heading span {
+        font-size: 0.62rem;
     }
 
     .countdown {
@@ -120,36 +168,64 @@
     }
 
     .countdown-card {
-        min-height: 82px;
+        min-height: 68px;
         grid-template-columns: minmax(34px, 1fr) minmax(32px, 0.82fr);
         border-radius: 11px;
     }
 
     .countdown-card strong {
-        font-size: clamp(1.35rem, 6vw, 2rem);
+        font-size: clamp(1.12rem, 5vw, 1.55rem);
     }
 
     .countdown-card > span {
-        min-height: 42px;
+        min-height: 34px;
         padding-left: 3px;
     }
 
     .countdown-card b {
-        font-size: 0.65rem;
+        font-size: 0.56rem;
     }
 
     .countdown-card small {
-        font-size: 0.43rem;
+        font-size: 0.38rem;
         letter-spacing: 0;
     }
 
     .details-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         border-radius: 16px;
     }
 
     .detail-item {
-        min-height: 132px;
-        padding: 24px 12px;
+        min-height: 104px;
+        padding: 16px 5px;
+    }
+
+    .detail-item h3 {
+        margin-bottom: 10px;
+        font-size: 0.72rem;
+    }
+
+    .detail-item h3 span {
+        font-size: 0.52rem;
+        letter-spacing: 0.04em;
+    }
+
+    .detail-item p {
+        font-size: 0.68rem;
+        line-height: 1.45;
+    }
+
+    #details h2 {
+        margin-bottom: 22px;
+    }
+
+    .desktop-value {
+        display: none;
+    }
+
+    .mobile-value {
+        display: inline;
     }
 
     .deadline-notice {
@@ -158,6 +234,11 @@
         gap: 0;
         border-radius: 16px;
         line-height: 1.5;
+    }
+
+    .privacy-note {
+        margin-bottom: 28px;
+        font-size: 0.76rem;
     }
 
     .form-step {
@@ -201,7 +282,7 @@
     }
 
     .detail-item {
-        min-height: 112px;
+        min-height: 96px;
     }
 
     .choice-grid.two-columns {

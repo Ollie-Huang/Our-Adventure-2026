@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#rsvp-form");
     const status = document.querySelector("#form-status");
     const submitButton = form.querySelector(".submit-button");
+    const loadingOverlay = document.querySelector("#submit-loading");
     const successOverlay = document.querySelector("#submit-success");
     let submissionInProgress = false;
     let successTimer;
@@ -17,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function setSubmitting(isSubmitting) {
         submissionInProgress = isSubmitting;
         submitButton.disabled = isSubmitting;
+        loadingOverlay.classList.toggle("is-visible", isSubmitting);
+        loadingOverlay.setAttribute("aria-hidden", String(!isSubmitting));
         submitButton.innerHTML = isSubmitting
             ? "送出中… <span>SENDING</span>"
             : "送出回覆 <span>SUBMIT RSVP</span>";

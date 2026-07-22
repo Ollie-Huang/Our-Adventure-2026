@@ -102,7 +102,8 @@
 /* About and countdown */
 #about {
     position: relative;
-    padding: 110px 0 120px;
+    min-height: calc(100svh - var(--nav-height));
+    padding: 48px 0 52px;
     overflow: hidden;
     background:
         radial-gradient(circle at 12% 16%, rgba(212, 163, 115, 0.17), transparent 28%),
@@ -138,19 +139,19 @@
 
 .about-copy {
     max-width: 650px;
-    margin: 38px auto 66px;
+    margin: 24px auto 28px;
     color: #665f59;
     font-size: 1rem;
-    line-height: 2.15;
+    line-height: 1.9;
     text-align: center;
 }
 
 .about-copy p {
-    margin: 0 0 18px;
+    margin: 0 0 8px;
 }
 
 .countdown-heading {
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     text-align: center;
 }
 
@@ -178,7 +179,7 @@
 .countdown-card {
     position: relative;
     display: grid;
-    min-height: 116px;
+    min-height: 94px;
     grid-template-columns: minmax(64px, 1fr) minmax(48px, 0.8fr);
     align-items: center;
     overflow: hidden;
@@ -229,12 +230,13 @@
 
 /* Wedding details */
 #details {
-    padding: 105px 20px;
+    min-height: calc(100svh - var(--nav-height));
+    padding: 56px 20px 64px;
     background: var(--white);
 }
 
 #details h2 {
-    margin-bottom: 54px;
+    margin-bottom: 34px;
     font-size: clamp(1.8rem, 4vw, 2.55rem);
 }
 
@@ -273,6 +275,10 @@
 .detail-item p {
     margin: 0;
     color: #5e5954;
+}
+
+.mobile-value {
+    display: none;
 }
 
 /* Location */
@@ -331,7 +337,7 @@
 
 /* RSVP and footer */
 #rsvp {
-    padding: 110px 0;
+    padding: 62px 0 84px;
     background: var(--white);
 }
 
