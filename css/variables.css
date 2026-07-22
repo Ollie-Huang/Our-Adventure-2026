@@ -1,0 +1,15 @@
+:root {
+    --sun: #d4a373;
+    --sage: #8da399;
+    --sage-deep: #647c72;
+    --ivory: #fbf8f3;
+    --sand: #f1e7da;
+    --ink: #393734;
+    --muted: #766f68;
+    --line: rgba(100, 124, 114, 0.24);
+    --white: #ffffff;
+    --shadow-soft: 0 18px 45px rgba(80, 69, 56, 0.12);
+    --font-display: "Cormorant Garamond", serif;
+    --font-body: "Noto Serif TC", serif;
+    --nav-height: 74px;
+}

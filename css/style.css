@@ -1,9 +1,17 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+}
+
 body {
     margin: 0;
-    font-family: "Noto Serif TC", serif;
-    background-color: #F8F6F2;
-    color: #3D3D3D;
+    padding-top: var(--nav-height);
+    overflow-x: hidden;
+    background-color: var(--ivory);
+    color: var(--ink);
+    font-family: var(--font-body);
     line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -11,11 +19,26 @@ body {
 }
 
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+::selection {
+    background: rgba(212, 163, 115, 0.3);
 }

@@ -3,20 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="誠摯邀請您參加黃冠禎與李玟慧的婚禮，並填寫出席回函。">
+    <title>黃冠禎與李玟慧｜婚禮出席回函</title>
 
-    <title>黃冠禎 & 李玟慧｜婚禮邀請</title>
-
-        <meta name="description"
-          content="誠摯邀請您參加黃冠禎與李玟慧的婚禮，一起見證我們人生最重要的一天。">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/variables.css">
@@ -29,166 +22,300 @@
 </head>
 
 <body>
-<!-- v0.2 website framework -->
-<header id="hero">
-
-    <h1>黃冠禎 & 李玟慧</h1>
-
-    <p>Wedding Invitation</p>
-
-    <p>2026 年 12 月 12 日</p>
-
-</header>
-
-<section id="details">
-
-    <h2>Wedding Details</h2>
-
-    <div class="details-grid">
-
-        <div class="detail-item">
-            <h3>日期</h3>
-            <p>2026 年 11 月 28 日（六）</p>
+    <nav class="site-nav" aria-label="主要導覽">
+        <div class="nav-links">
+            <a href="#about"><span>關於我們</span><small>ABOUT</small></a>
+            <a href="#details"><span>婚禮詳情</span><small>DETAILS</small></a>
+            <a href="#rsvp"><span>出席回函</span><small>RSVP</small></a>
         </div>
+    </nav>
 
-        <div class="detail-item">
-            <h3>迎賓</h3>
-            <p>17:30</p>
+    <header id="hero">
+        <img class="hero-photo" src="images/hero.jpg" alt="黃冠禎與李玟慧的婚紗照">
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+            <p class="hero-kicker">Wedding Invitation</p>
+            <h1><span>黃冠禎</span><i>與</i><span>李玟慧</span></h1>
+            <p class="hero-date">December 12, 2026</p>
         </div>
+    </header>
 
-        <div class="detail-item">
-            <h3>開席</h3>
-            <p>18:00</p>
-        </div>
+    <main>
+        <section id="about">
+            <div class="section-container about-container">
+                <p class="section-label">關於我們 <span>ABOUT US</span></p>
+                <h2>從指尖的滑過，到餘生的相握</h2>
 
-        <div class="detail-item">
-            <h3>台南晶英酒店</h3>
-            <p>（先填宴客地點）</p>
-        </div>
+                <div class="about-copy">
+                    <p>命運的演算，讓兩顆原本平行的小行星，在茫茫人海的螢幕微光中相遇、連線。</p>
+                    <p>謝謝你出現在我的軌道裡。這一次，我們決定把線上的對話，走成餘生的長路。</p>
+                    <p>誠摯邀請你，來見證這場由偶然編織成的必然。</p>
+                </div>
 
-    </div>
+                <div class="countdown-heading">
+                    <p>距離我們的重要日子</p>
+                    <span>COUNTDOWN TO OUR DAY</span>
+                </div>
 
-</section>
-
-<section id="transportation">
-    <div class="section-container">
-        <p class="section-label">Location</p>
-        <h2>台南晶英酒店</h2>
-
-        <div class="location-content">
-            <h3>大成廳</h3>
-            <p>700臺南市中西區小西門里和意路1號</p>
-
-            <a
-                class="map-link"
-                href="https://share.google/dL6MxzB3mv37BZtOU"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                查看 Google 地圖
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="rsvp">
-    <div class="section-container">
-        <p class="section-label">RSVP</p>
-        <h2>出席意願調查</h2>
-        <p class="section-description">
-            請協助填寫以下資訊，讓我們能為您準備最合適的安排。
-        </p>
-
-        <p class="privacy-note">
-            您填寫的資料僅用於婚宴座位與餐點安排。
-        </p>
-
-        <form id="rsvp-form">
-            <div class="website-field" aria-hidden="true">
-                <label for="website">網站</label>
-                <input
-                     type="text"
-                      id="website"
-                      name="website"
-                      tabindex="-1"
-                      autocomplete="off"
-    >
-</div>
-            <div class="form-group">
-                <label for="name">姓名</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="請輸入您的姓名"
-                    required
-                >
+                <div class="countdown" aria-label="婚禮倒數計時">
+                    <div class="countdown-card">
+                        <strong id="countdown-days">000</strong>
+                        <span><b>天</b><small>DAYS</small></span>
+                    </div>
+                    <div class="countdown-card">
+                        <strong id="countdown-hours">00</strong>
+                        <span><b>時</b><small>HOURS</small></span>
+                    </div>
+                    <div class="countdown-card">
+                        <strong id="countdown-minutes">00</strong>
+                        <span><b>分</b><small>MINUTES</small></span>
+                    </div>
+                    <div class="countdown-card">
+                        <strong id="countdown-seconds">00</strong>
+                        <span><b>秒</b><small>SECONDS</small></span>
+                    </div>
+                </div>
+                <p id="countdown-finished" class="countdown-finished" hidden>今天就是我們的重要日子</p>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label>是否出席</label>
+        <section id="details">
+            <div class="wide-container">
+                <p class="section-label">婚禮詳情 <span>WEDDING DETAILS</span></p>
+                <h2>誠摯邀請您蒞臨</h2>
 
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input
-                            type="radio"
-                            name="attendance"
-                            value="出席"
-                            required
-                        >
-                        <span>欣然出席</span>
-                    </label>
-
-                    <label class="radio-option">
-                        <input
-                            type="radio"
-                            name="attendance"
-                            value="不出席"
-                        >
-                        <span>不克出席</span>
-                    </label>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <h3>日期 <span>DATE</span></h3>
+                        <p>2026 年 12 月 12 日（六）</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>迎賓 <span>WELCOME</span></h3>
+                        <p>17:30</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>開席 <span>BANQUET</span></h3>
+                        <p>18:00</p>
+                    </div>
+                    <div class="detail-item">
+                        <h3>地點 <span>VENUE</span></h3>
+                        <p>台南晶英酒店・大成廳</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label for="guest-count">出席人數</label>
-                <select id="guest-count" name="guestCount">
-                    <option value="">請選擇人數</option>
-                    <option value="1">1 位</option>
-                    <option value="2">2 位</option>
-                    <option value="3">3 位</option>
-                    <option value="4">4 位</option>
-                    <option value="5">5 位</option>
-                    <option value="6">6 位以上</option>
-                </select>
+        <section id="transportation">
+            <div class="section-container">
+                <p class="section-label">婚宴地點 <span>LOCATION</span></p>
+                <h2>台南晶英酒店</h2>
+                <div class="location-content">
+                    <h3>大成廳</h3>
+                    <p>700 臺南市中西區和意路 1 號</p>
+                    <a class="map-link" href="https://share.google/dL6MxzB3mv37BZtOU" target="_blank" rel="noopener noreferrer">
+                        查看 Google 地圖 <span>VIEW MAP</span>
+                    </a>
+                </div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label for="message">備註</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    placeholder="飲食需求、兒童座椅或其他需要協助的事項"
-                ></textarea>
+        <section id="rsvp">
+            <div class="section-container rsvp-container">
+                <p class="section-label">出席回函 <span>RSVP</span></p>
+                <h2>期待與您相見</h2>
+                <p class="deadline-notice"><strong>最後填寫日期：2026/10/12</strong><span>REPLY BY OCTOBER 12, 2026</span></p>
+                <p class="privacy-note">您的姓名為必填、聯絡手機為選填；資料僅用於婚宴座位、喜帖及餐點安排。</p>
+
+                <div id="form-closed-message" class="form-closed-message" hidden>
+                    回函填寫已於 2026/10/12 截止，如需協助請直接聯絡新人。
+                </div>
+
+                <form id="rsvp-form" novalidate>
+                    <div class="website-field" aria-hidden="true">
+                        <label for="website">網站</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <fieldset class="form-step">
+                        <legend><span>01</span> 基本資料 <small>YOUR INFORMATION</small></legend>
+
+                        <div class="form-group">
+                            <label for="name">姓名 <span>NAME</span><em>必填</em></label>
+                            <input type="text" id="name" name="name" maxlength="50" autocomplete="name" placeholder="請輸入您的姓名" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">聯絡手機 <span>PHONE</span><em class="optional">選填</em></label>
+                            <input type="tel" id="phone" name="phone" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="例如：0912345678（選填）">
+                        </div>
+
+                        <div class="form-group">
+                            <span class="field-label">與新人的關係 <span>RELATIONSHIP</span><em>必填</em></span>
+                            <div class="choice-grid two-columns">
+                                <label class="choice-option">
+                                    <input type="radio" name="relationship" value="男方親友" required>
+                                    <span>男方親友</span>
+                                </label>
+                                <label class="choice-option">
+                                    <input type="radio" name="relationship" value="女方親友">
+                                    <span>女方親友</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step">
+                        <legend><span>02</span> 出席意願 <small>ATTENDANCE</small></legend>
+                        <div class="form-group">
+                            <span class="field-label">是否出席 <span>WILL YOU ATTEND</span><em>必填</em></span>
+                            <div class="choice-grid two-columns">
+                                <label class="choice-option">
+                                    <input type="radio" name="attendance" value="出席" required>
+                                    <span>欣然出席</span>
+                                </label>
+                                <label class="choice-option">
+                                    <input type="radio" name="attendance" value="不出席">
+                                    <span>不克出席</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div id="attending-questions" class="conditional-panel" hidden>
+                        <fieldset class="form-step">
+                            <legend><span>03</span> 喜帖與席位 <small>INVITATION AND SEATS</small></legend>
+
+                            <div class="form-group">
+                                <span class="field-label">喜帖形式 <span>INVITATION TYPE</span><em>必填</em></span>
+                                <div class="choice-grid two-columns">
+                                    <label class="choice-option">
+                                        <input type="radio" name="invitationType" value="紙本喜帖" data-required-when-attending>
+                                        <span>紙本喜帖</span>
+                                    </label>
+                                    <label class="choice-option">
+                                        <input type="radio" name="invitationType" value="數位喜帖">
+                                        <span>數位喜帖</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="paper-invitation-fields" class="nested-panel" hidden>
+                                <div class="form-row">
+                                    <div class="form-group compact-field">
+                                        <label for="postal-code">郵遞區號 <span>POSTAL CODE</span><em>必填</em></label>
+                                        <input type="text" id="postal-code" name="postalCode" maxlength="6" inputmode="numeric" autocomplete="postal-code" placeholder="例如：700" data-required-when-paper>
+                                    </div>
+                                    <div class="form-group grow-field">
+                                        <label for="address">寄送地址 <span>ADDRESS</span><em>必填</em></label>
+                                        <input type="text" id="address" name="address" maxlength="150" autocomplete="street-address" placeholder="請輸入完整寄送地址" data-required-when-paper>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="adult-count">大人人數 <span>ADULTS</span><em>必填</em></label>
+                                    <select id="adult-count" name="adultCount" data-required-when-attending>
+                                        <option value="">請選擇</option>
+                                        <option value="0">0 位</option>
+                                        <option value="1">1 位</option>
+                                        <option value="2">2 位</option>
+                                        <option value="3">3 位</option>
+                                        <option value="4">4 位</option>
+                                        <option value="5">5 位</option>
+                                        <option value="6">6 位以上</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="child-count">小孩人數 <span>CHILDREN</span><em>必填</em></label>
+                                    <select id="child-count" name="childCount" data-required-when-attending>
+                                        <option value="">請選擇</option>
+                                        <option value="0">0 位</option>
+                                        <option value="1">1 位</option>
+                                        <option value="2">2 位</option>
+                                        <option value="3">3 位</option>
+                                        <option value="4">4 位</option>
+                                        <option value="5">5 位以上</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="child-needs-fields" class="nested-panel" hidden>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="child-tableware">兒童餐具 <span>KIDS TABLEWARE</span><em>必填</em></label>
+                                        <select id="child-tableware" name="childTableware" data-required-when-children>
+                                            <option value="">請選擇數量</option>
+                                            <option value="0">不需要</option>
+                                            <option value="1">1 副</option>
+                                            <option value="2">2 副</option>
+                                            <option value="3">3 副</option>
+                                            <option value="4">4 副</option>
+                                            <option value="5">5 副以上</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="child-chair">兒童座椅 <span>HIGH CHAIRS</span><em>必填</em></label>
+                                        <select id="child-chair" name="childChair" data-required-when-children>
+                                            <option value="">請選擇數量</option>
+                                            <option value="0">不需要</option>
+                                            <option value="1">1 張</option>
+                                            <option value="2">2 張</option>
+                                            <option value="3">3 張</option>
+                                            <option value="4">4 張</option>
+                                            <option value="5">5 張以上</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="field-label">飲食習慣 <span>DIETARY PREFERENCE</span><em>必填</em></span>
+                                <div class="choice-grid two-columns">
+                                    <label class="choice-option">
+                                        <input type="radio" name="diet" value="葷食" data-required-when-attending>
+                                        <span>葷食</span>
+                                    </label>
+                                    <label class="choice-option">
+                                        <input type="radio" name="diet" value="素食">
+                                        <span>素食</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <fieldset id="blessing-step" class="form-step blessing-step">
+                        <legend><span>04</span> 給新人的祝福 <small>BLESSING</small></legend>
+                        <div class="form-group">
+                            <label for="blessing">悄悄話 <span>MESSAGE</span><em class="optional">選填</em></label>
+                            <textarea id="blessing" name="blessing" rows="5" maxlength="500" placeholder="留下您的悄悄話..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="submit-button">送出回覆 <span>SUBMIT RSVP</span></button>
+                    <p class="immutable-note">送出期間請勿關閉頁面；完成後將保留原始紀錄，若需更正請重新填寫。</p>
+                    <p id="form-status" aria-live="polite"></p>
+                </form>
             </div>
+        </section>
+    </main>
 
-            <button type="submit" class="submit-button">
-                送出回覆
-            </button>
-
-            <p id="form-status" aria-live="polite"></p>
-        </form>
+    <div id="submit-success" class="success-overlay" role="status" aria-live="assertive" aria-hidden="true">
+        <div class="success-card">
+            <div class="success-check" aria-hidden="true">✓</div>
+            <strong>回覆完成</strong>
+            <span>THANK YOU</span>
+            <p>謝謝您的回覆，我們已經收到囉！</p>
+        </div>
     </div>
-</section>
 
-<footer id="footer">
-    <p class="footer-names">黃冠禎 & 李玟慧</p>
-    <p>Thank you for being part of our special day.</p>
-    <p class="footer-year">2026</p>
-</footer>
+    <footer id="footer">
+        <p class="footer-names">黃冠禎・李玟慧</p>
+        <p>Thank you for being part of our special day.</p>
+        <p class="footer-year">2026</p>
+    </footer>
 
-    <!-- JavaScript -->
     <script src="js/navbar.js"></script>
     <script src="js/countdown.js"></script>
     <script src="js/accordion.js"></script>
@@ -196,6 +323,5 @@
     <script src="js/submit.js"></script>
     <script src="js/animation.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

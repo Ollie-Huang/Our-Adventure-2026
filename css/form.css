@@ -1,110 +1,258 @@
 #rsvp-form {
-    max-width: 620px;
+    max-width: 760px;
     margin: 0 auto;
 }
 
-.form-group {
-    margin-bottom: 28px;
+.form-step {
+    margin: 0 0 22px;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--ivory);
+    box-shadow: 0 10px 30px rgba(86, 76, 66, 0.05);
 }
 
-.form-group > label {
+.form-step legend {
+    padding: 0 12px;
+    color: var(--sage-deep);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.form-step legend > span {
+    margin-right: 8px;
+    color: var(--sun);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+}
+
+.form-step legend small {
+    margin-left: 6px;
+    color: var(--sun);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+.form-group {
+    min-width: 0;
+    margin-bottom: 26px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group > label,
+.field-label {
     display: block;
     margin-bottom: 10px;
+    color: #4f4b47;
+    font-size: 0.96rem;
     font-weight: 500;
+}
+
+.form-group > label > span,
+.field-label > span {
+    margin-left: 6px;
+    color: var(--sage-deep);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.form-group em,
+.field-label em {
+    float: right;
+    margin-top: 2px;
+    color: #a66e46;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.form-group em.optional {
+    color: #8b857e;
 }
 
 input,
 select,
 textarea {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #d8d1c9;
-    border-radius: 0;
-    background-color: #ffffff;
-    color: #3d3935;
-    font: inherit;
+    padding: 13px 15px;
+    border: 1px solid #d8d0c7;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 textarea {
+    min-height: 130px;
     resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aaa39b;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #9a8068;
+    border-color: var(--sage);
+    box-shadow: 0 0 0 4px rgba(141, 163, 153, 0.13);
     outline: none;
 }
 
-.radio-group {
-    display: flex;
-    gap: 14px;
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #b86565;
 }
 
-.radio-option {
-    flex: 1;
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-row .compact-field {
+    grid-column: span 1;
+}
+
+.form-row .grow-field {
+    grid-column: span 1;
+}
+
+.choice-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.choice-grid.two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-option {
+    position: relative;
     cursor: pointer;
 }
 
-.radio-option input {
+.choice-option input {
     position: absolute;
     width: 1px;
     height: 1px;
     opacity: 0;
 }
 
-.radio-option span {
-    display: block;
-    padding: 13px 16px;
-    border: 1px solid #d8d1c9;
+.choice-option > span {
+    display: flex;
+    min-height: 50px;
+    padding: 11px 14px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8d0c7;
+    border-radius: 12px;
+    background: var(--white);
     text-align: center;
-    transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.radio-option input:checked + span {
-    border-color: #9a8068;
-    background-color: #f5f1eb;
+.choice-option input:checked + span {
+    border-color: var(--sage);
+    background: rgba(141, 163, 153, 0.14);
+    color: #4f675d;
+    transform: translateY(-1px);
+}
+
+.choice-option input:focus-visible + span {
+    box-shadow: 0 0 0 4px rgba(141, 163, 153, 0.16);
+}
+
+.conditional-panel {
+    animation: panel-in 0.35s ease both;
+}
+
+.nested-panel {
+    margin: 4px 0 26px;
+    padding: 22px;
+    border-left: 3px solid rgba(212, 163, 115, 0.7);
+    border-radius: 0 14px 14px 0;
+    background: rgba(212, 163, 115, 0.08);
+    animation: panel-in 0.3s ease both;
+}
+
+.nested-panel .form-group {
+    margin-bottom: 0;
+}
+
+.blessing-step {
+    border-color: rgba(212, 163, 115, 0.38);
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.1), rgba(141, 163, 153, 0.08));
 }
 
 .submit-button {
+    display: flex;
     width: 100%;
-    padding: 15px 20px;
-    border: 1px solid #4c4641;
-    background-color: #4c4641;
-    color: #ffffff;
+    min-height: 56px;
+    padding: 14px 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(110deg, var(--sun), #c68f5e);
+    box-shadow: 0 12px 28px rgba(166, 110, 70, 0.22);
+    color: var(--white);
     cursor: pointer;
-    font: inherit;
-    letter-spacing: 2px;
-    transition: opacity 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
-.submit-button:hover {
-    opacity: 0.82;
+.submit-button span {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
-#form-status {
-    min-height: 28px;
-    margin-top: 18px;
-    text-align: center;
-}
-
-.form-group[hidden] {
-    display: none;
+.submit-button:hover:not(:disabled),
+.submit-button:focus-visible:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(166, 110, 70, 0.28);
+    outline: none;
 }
 
 .submit-button:disabled {
     cursor: not-allowed;
-    opacity: 0.55;
+    opacity: 0.5;
+}
+
+.immutable-note {
+    margin: 14px 0 0;
+    color: #8d867f;
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+#form-status {
+    min-height: 30px;
+    margin: 18px 0 0;
+    font-size: 0.92rem;
+    text-align: center;
 }
 
 .form-status-error {
-    color: #a74646;
+    color: #a34f4f;
 }
 
 .form-status-success {
-    color: #58765a;
+    color: #52725f;
 }
 
 .website-field {
@@ -113,4 +261,108 @@ textarea:focus {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+@keyframes panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-overlay {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    padding: 24px;
+    place-items: center;
+    visibility: hidden;
+    background: rgba(56, 61, 58, 0.28);
+    opacity: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.success-overlay.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.success-card {
+    width: min(100%, 360px);
+    padding: 38px 28px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.88);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 24px 70px rgba(62, 68, 64, 0.2), 0 0 32px rgba(255, 255, 255, 0.8);
+    text-align: center;
+    transform: translateY(16px) scale(0.94);
+}
+
+.success-overlay.is-visible .success-card {
+    animation: success-card-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.success-check {
+    display: grid;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+    box-shadow: 0 12px 28px rgba(100, 124, 114, 0.25);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 1;
+}
+
+.success-overlay.is-visible .success-check {
+    animation: success-check-in 0.5s 0.18s ease both;
+}
+
+.success-card strong {
+    display: block;
+    color: #4f6259;
+    font-size: 1.45rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.success-card > span {
+    color: var(--sun);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+}
+
+.success-card p {
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+@keyframes success-card-in {
+    to {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes success-check-in {
+    from {
+        opacity: 0;
+        transform: scale(0.4) rotate(-12deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
 }

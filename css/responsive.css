@@ -1,20 +1,238 @@
-@media (max-width:768px){
-
-.details-grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-@media (max-width: 600px) {
-    .radio-group {
-        flex-direction: column;
+@media (max-width: 900px) {
+    .details-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        --nav-height: 60px;
+    }
+
+    html {
+        scroll-padding-top: var(--nav-height);
+    }
+
+    .site-nav {
+        top: 0;
+        width: 100%;
+        padding: 0 7px;
+    }
+
+    .nav-links {
+        width: 100%;
+        gap: 0;
+        padding: 0;
+        justify-content: space-around;
+    }
+
+    .nav-links a {
+        height: 100%;
+        min-height: 0;
+        padding: 3px 7px;
+        flex-direction: column;
+        gap: 0;
+        font-size: 0.68rem;
+        line-height: 1.2;
+    }
+
+    .nav-links small {
+        font-size: 0.58rem;
+    }
+
+    .nav-links a::after {
+        bottom: 7px;
+    }
+
+    #hero {
+        display: block;
+        min-height: 0;
+        padding-top: 0;
+        background: #4d5d56;
+    }
+
+    .hero-photo {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        object-fit: contain;
+    }
+
+    .hero-shade {
+        display: block;
+        background: linear-gradient(180deg, rgba(23, 31, 27, 0.42) 0%, rgba(23, 31, 27, 0.04) 58%, transparent 100%);
+    }
+
+    .hero-content {
+        position: absolute;
+        top: clamp(10px, 3.5vw, 24px);
+        left: 50%;
+        width: calc(100% - 24px);
+        padding: 0;
+        transform: translateX(-50%);
+        background: transparent;
+        text-shadow: 0 2px 14px rgba(20, 27, 24, 0.5);
+    }
+
+    .hero-kicker {
+        margin-bottom: 2px;
+        font-size: clamp(0.62rem, 2.7vw, 0.82rem);
+    }
+
+    #hero h1 {
+        gap: 8px;
+        font-size: clamp(1.25rem, 6.4vw, 2.1rem);
+        letter-spacing: 0.04em;
+    }
+
+    #hero h1 span {
+        white-space: nowrap;
+    }
+
+    .hero-date {
+        margin-top: 2px;
+        font-size: clamp(0.64rem, 2.8vw, 0.85rem);
+    }
+
+    #about,
+    #details,
     #transportation,
     #rsvp {
-        padding: 70px 0;
+        padding-top: 76px;
+        padding-bottom: 76px;
+    }
+
+    .about-copy {
+        margin: 30px auto 50px;
+        font-size: 0.94rem;
+        line-height: 2;
+        text-align: center;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .countdown-card {
+        min-height: 82px;
+        grid-template-columns: minmax(34px, 1fr) minmax(32px, 0.82fr);
+        border-radius: 11px;
+    }
+
+    .countdown-card strong {
+        font-size: clamp(1.35rem, 6vw, 2rem);
+    }
+
+    .countdown-card > span {
+        min-height: 42px;
+        padding-left: 3px;
+    }
+
+    .countdown-card b {
+        font-size: 0.65rem;
+    }
+
+    .countdown-card small {
+        font-size: 0.43rem;
+        letter-spacing: 0;
+    }
+
+    .details-grid {
+        border-radius: 16px;
+    }
+
+    .detail-item {
+        min-height: 132px;
+        padding: 24px 12px;
+    }
+
+    .deadline-notice {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 0;
+        border-radius: 16px;
+        line-height: 1.5;
+    }
+
+    .form-step {
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+
+    .form-step legend {
+        max-width: calc(100% - 12px);
+        padding: 0 6px;
+        line-height: 1.4;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 22px;
+    }
+
+    .nested-panel {
+        padding: 18px 14px;
+    }
+}
+
+@media (max-width: 430px) {
+    .nav-links a {
+        padding-inline: 6px;
+        font-size: 0.62rem;
+    }
+
+    .nav-links small {
+        font-size: 0.52rem;
+    }
+
+    .section-container,
+    .wide-container {
+        width: min(calc(100% - 28px), 780px);
+    }
+
+    .detail-item {
+        min-height: 112px;
+    }
+
+    .choice-grid.two-columns {
+        gap: 8px;
+    }
+
+    .choice-option > span {
+        padding-inline: 8px;
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .nav-links a {
+        padding-inline: 4px;
+        font-size: 0.58rem;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
