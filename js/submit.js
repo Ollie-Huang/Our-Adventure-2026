@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.set("responseId", responseId);
         formData.set("meatCount", String(meatCount));
         formData.set("clientSubmittedAt", new Date().toISOString());
-        formData.set("formVersion", "5.0");
+        formData.set("formVersion", "5.1");
         formData.set("source", "GitHub Pages");
 
         const receiptData = Object.fromEntries(formData.entries());

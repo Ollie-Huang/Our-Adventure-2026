@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vegetarianCount.disabled = false;
         const placeholder = document.createElement("option");
         placeholder.value = "";
-        placeholder.textContent = "請選擇素食大人人數";
+        placeholder.textContent = "請選擇素食人數";
         vegetarianCount.appendChild(placeholder);
 
         for (let value = 0; value <= adults; value += 1) {

@@ -178,13 +178,18 @@
 
     .about-copy {
         margin: 16px auto 20px;
-        font-size: 0.8rem;
+        font-size: clamp(0.68rem, 2.9vw, 0.8rem);
         line-height: 1.75;
         text-align: center;
     }
 
     .about-copy p {
         margin-bottom: 5px;
+    }
+
+    .about-copy .about-line {
+        display: block;
+        white-space: nowrap;
     }
 
     .countdown-heading {

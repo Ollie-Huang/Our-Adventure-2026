@@ -20,8 +20,8 @@ const HEADERS = [
     "大人人數",
     "小孩人數",
     "出席總人數",
-    "葷食大人人數",
-    "素食大人人數",
+    "葷食人數",
+    "素食人數",
     "兒童餐具",
     "兒童座椅",
     "其他特殊需求",
@@ -135,7 +135,7 @@ function doPost(e) {
             childChair,
             specialNeeds,
             blessing,
-            cleanValue(data.formVersion, 20) || "5.0",
+            cleanValue(data.formVersion, 20) || "5.1",
             cleanValue(data.source, 50) || "Wedding RSVP",
             cleanValue(data.clientSubmittedAt, 50)
         ];
@@ -335,7 +335,7 @@ function validateAttendingFields(fields) {
 function toCount(value) {
     if (value === undefined || value === null || value === "") return "";
     const number = Number(value);
-    if (!Number.isInteger(number) || number < 0 || number > 10) {
+    if (!Number.isInteger(number) || number < 0 || number > 6) {
         throw new Error("人數或數量格式錯誤");
     }
     return number;
