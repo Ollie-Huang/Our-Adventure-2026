@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = form.querySelector(".submit-button");
     const loadingOverlay = document.querySelector("#submit-loading");
     const successOverlay = document.querySelector("#submit-success");
+    const closeSuccessButton = document.querySelector("#close-success");
+    const saveReceiptButton = document.querySelector("#save-receipt");
+    const receiptNote = document.querySelector(".receipt-note");
     let submissionInProgress = false;
-    let successTimer;
 
     function showStatus(message, type) {
         status.textContent = message;
@@ -25,16 +27,60 @@ document.addEventListener("DOMContentLoaded", () => {
             : "送出回覆 <span>SUBMIT RSVP</span>";
     }
 
-    function showSuccessAnimation() {
-        window.clearTimeout(successTimer);
+    function showSuccessAnimation(receiptReady) {
+        saveReceiptButton.disabled = !receiptReady;
+        receiptNote.textContent = receiptReady
+            ? "行動裝置將開啟分享選單，請選擇儲存影像。"
+            : "回覆已送出，但目前無法產生儲存圖片。";
         successOverlay.classList.add("is-visible");
         successOverlay.setAttribute("aria-hidden", "false");
-
-        successTimer = window.setTimeout(() => {
-            successOverlay.classList.remove("is-visible");
-            successOverlay.setAttribute("aria-hidden", "true");
-        }, 3200);
+        window.setTimeout(() => closeSuccessButton.focus(), 180);
     }
+
+    function closeSuccessAnimation() {
+        successOverlay.classList.remove("is-visible");
+        successOverlay.setAttribute("aria-hidden", "true");
+    }
+
+    function createResponseId() {
+        if (window.crypto?.randomUUID) {
+            return window.crypto.randomUUID().replaceAll("-", "").slice(0, 8).toUpperCase();
+        }
+
+        return `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}`
+            .slice(0, 8)
+            .toUpperCase();
+    }
+
+    closeSuccessButton.addEventListener("click", closeSuccessAnimation);
+
+    successOverlay.addEventListener("click", (event) => {
+        if (event.target === successOverlay) closeSuccessAnimation();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && successOverlay.classList.contains("is-visible")) {
+            closeSuccessAnimation();
+        }
+    });
+
+    saveReceiptButton.addEventListener("click", async () => {
+        const originalContent = saveReceiptButton.innerHTML;
+        saveReceiptButton.disabled = true;
+        saveReceiptButton.textContent = "準備圖片中…";
+
+        try {
+            await window.RSVPReceipt.save();
+            receiptNote.textContent = "回覆圖片已準備完成，請依裝置提示儲存。";
+        } catch (error) {
+            if (error?.name !== "AbortError") {
+                receiptNote.textContent = "圖片儲存失敗，請再試一次或直接截圖留存。";
+            }
+        } finally {
+            saveReceiptButton.innerHTML = originalContent;
+            saveReceiptButton.disabled = false;
+        }
+    });
 
     window.addEventListener("beforeunload", (event) => {
         if (!submissionInProgress) return;
@@ -91,9 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
             phone = `0${phone.slice(4)}`;
         }
 
+        let meatCount = "";
+
         if (attendance === "出席") {
             const adults = Number(formData.get("adultCount") || 0);
             const children = Number(formData.get("childCount") || 0);
+            const vegetarian = Number(formData.get("vegetarianCount") || 0);
             const tableware = Number(formData.get("childTableware") || 0);
             const chairs = Number(formData.get("childChair") || 0);
 
@@ -103,11 +152,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            if (vegetarian > adults) {
+                document.querySelector("#vegetarian-count").focus();
+                showStatus("素食人數不能大於大人人數。", "error");
+                return;
+            }
+
             if (tableware > children || chairs > children) {
                 showStatus("兒童餐具與座椅數量不能大於小孩人數。", "error");
                 document.querySelector("#child-tableware").focus();
                 return;
             }
+
+            meatCount = adults - vegetarian;
         }
 
         if (
@@ -118,11 +175,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const responseId = createResponseId();
         formData.set("phone", phone);
-        formData.append("clientSubmittedAt", new Date().toISOString());
-        formData.append("formVersion", "2.0");
-        formData.append("source", "GitHub Pages");
+        formData.set("responseId", responseId);
+        formData.set("meatCount", String(meatCount));
+        formData.set("clientSubmittedAt", new Date().toISOString());
+        formData.set("formVersion", "5.0");
+        formData.set("source", "GitHub Pages");
 
+        const receiptData = Object.fromEntries(formData.entries());
         setSubmitting(true);
 
         try {
@@ -133,8 +194,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 keepalive: true
             });
 
+            let receiptReady = false;
+
+            try {
+                await window.RSVPReceipt.prepare(receiptData);
+                receiptReady = true;
+            } catch (receiptError) {
+                receiptReady = false;
+            }
+
             showStatus("謝謝您的回覆，我們已收到您的出席資訊。", "success");
-            showSuccessAnimation();
+            showSuccessAnimation(receiptReady);
             form.reset();
             form.dispatchEvent(new CustomEvent("rsvp-form-reset"));
         } catch (error) {

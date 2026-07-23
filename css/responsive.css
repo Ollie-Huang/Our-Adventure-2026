@@ -8,6 +8,43 @@
     }
 }
 
+@media (orientation: portrait) and (min-width: 721px) and (max-width: 1180px) {
+    #hero {
+        display: block;
+        min-height: 0;
+        background: #4d5d56;
+    }
+
+    .hero-photo {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .hero-shade {
+        background: linear-gradient(180deg, rgba(23, 31, 27, 0.42) 0%, rgba(23, 31, 27, 0.04) 55%, transparent 100%);
+    }
+
+    .hero-content {
+        top: clamp(54px, 8vw, 96px);
+        width: calc(100% - 60px);
+    }
+
+    .hero-kicker {
+        font-size: clamp(1rem, 2.2vw, 1.45rem);
+    }
+
+    #hero h1 {
+        gap: clamp(18px, 3vw, 34px);
+        font-size: clamp(2.8rem, 6.2vw, 4.5rem);
+    }
+
+    .hero-date {
+        font-size: clamp(1rem, 2.3vw, 1.4rem);
+    }
+}
+
 @media (max-width: 720px) {
     :root {
         --nav-height: 60px;
@@ -239,6 +276,31 @@
     .privacy-note {
         margin-bottom: 28px;
         font-size: 0.76rem;
+    }
+
+    .privacy-note span {
+        display: block;
+    }
+
+    .privacy-note span + span::before {
+        content: "";
+    }
+
+    .ceremony-details {
+        margin-top: 18px;
+        padding: 14px 16px;
+        gap: 12px;
+        border-radius: 14px;
+    }
+
+    .ceremony-mark {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
+    }
+
+    .ceremony-details small {
+        font-size: 0.72rem;
     }
 
     .form-step {

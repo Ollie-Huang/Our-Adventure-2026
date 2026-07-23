@@ -1,0 +1,18 @@
+Google Apps Script v5 更新步驟
+
+1. 開啟目前接收 RSVP 的 Google 試算表。
+2. 點「擴充功能」→「Apps Script」。
+3. 打開專案內 google-apps-script/Code.gs，複製全部內容，覆蓋 Apps Script 原本的 Code.gs。
+4. 將第一行 SPREADSHEET_ID 的「請貼上你目前的試算表ID」換回你的試算表 ID。
+5. 儲存後，在上方函式清單選擇 setupRSVPSheet，按「執行」一次並完成授權。
+6. 原本的 RSVP 工作表會自動改名為「RSVP 舊版備份 日期時間」，新版欄位會建立在新的 RSVP 工作表。
+7. 點右上角「部署」→「管理部署作業」→目前部署右側鉛筆圖示。
+8. 「版本」選擇「新版本」，再按「部署」。請不要建立另一個完全不同的網頁應用程式。
+9. 部署完成後確認網頁應用程式網址仍以 /exec 結尾。若網址改變，請同步更新 js/submit.js 裡的 RSVP_ENDPOINT。
+10. 一般賓客使用正常網站網址，不會看到證婚儀式資訊。
+11. 證婚儀式受邀者請使用：
+    https://你的GitHub帳號.github.io/Our-Adventure-2026/?ceremony=ghc-12dec26-a8f4k9m2
+
+新版試算表會記錄：
+姓名、選填手機、關係、婚宴出席、儀式受邀與出席、喜帖形式、Email、地址、
+大人與小孩人數、葷食與素食大人人數、兒童用品、其他特殊需求、祝福及回覆編號。

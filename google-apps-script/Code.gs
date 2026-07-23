@@ -10,16 +10,21 @@ const HEADERS = [
     "姓名",
     "聯絡手機（選填）",
     "與新人關係",
-    "是否出席",
+    "婚宴出席",
+    "儀式受邀",
+    "儀式出席",
     "喜帖形式",
+    "數位喜帖 Email",
     "郵遞區號",
     "寄送地址",
     "大人人數",
     "小孩人數",
     "出席總人數",
+    "葷食大人人數",
+    "素食大人人數",
     "兒童餐具",
     "兒童座椅",
-    "飲食習慣",
+    "其他特殊需求",
     "給新人的祝福",
     "表單版本",
     "資料來源",
@@ -42,51 +47,68 @@ function doPost(e) {
             return createResponse(true, "ignored");
         }
 
+        const responseId = normalizeResponseId(data.responseId) || Utilities.getUuid().slice(0, 8).toUpperCase();
         const name = cleanValue(data.name, 50);
         const phone = normalizeSubmittedPhone(data.phone);
         const relationship = cleanValue(data.relationship, 20);
         const attendance = cleanValue(data.attendance, 20);
+        const ceremonyInvited = cleanValue(data.ceremonyInvited, 10) === "是" ? "是" : "否";
+        const ceremonyAttendance = ceremonyInvited === "是"
+            ? cleanValue(data.ceremonyAttendance, 20)
+            : "";
         const blessing = cleanValue(data.blessing, 500);
+        const specialNeeds = cleanValue(data.specialNeeds, 300);
 
-        validateBaseFields({ name, relationship, attendance, blessing });
+        validateBaseFields({
+            name,
+            relationship,
+            attendance,
+            ceremonyInvited,
+            ceremonyAttendance
+        });
 
         let invitationType = "";
+        let digitalEmail = "";
         let postalCode = "";
         let address = "";
         let adultCount = "";
         let childCount = "";
-        let totalCount = 0;
+        let totalCount = "";
+        let meatCount = "";
+        let vegetarianCount = "";
         let childTableware = "";
         let childChair = "";
-        let diet = "";
 
         if (attendance === "出席") {
             invitationType = cleanValue(data.invitationType, 20);
+            digitalEmail = cleanValue(data.digitalEmail, 120);
             postalCode = cleanValue(data.postalCode, 10);
             address = cleanValue(data.address, 150);
             adultCount = toCount(data.adultCount);
             childCount = toCount(data.childCount);
+            vegetarianCount = toCount(data.vegetarianCount);
             childTableware = toCount(data.childTableware);
             childChair = toCount(data.childChair);
-            diet = cleanValue(data.diet, 20);
             totalCount = Number(adultCount) + Number(childCount);
+            meatCount = Number(adultCount) - Number(vegetarianCount);
 
             validateAttendingFields({
                 invitationType,
+                digitalEmail,
                 postalCode,
                 address,
                 adultCount,
                 childCount,
                 totalCount,
+                meatCount,
+                vegetarianCount,
                 childTableware,
-                childChair,
-                diet
+                childChair
             });
         }
 
         const sheet = getPreparedSheet();
         const duplicate = findDuplicate(sheet, name, phone);
-        const responseId = Utilities.getUuid().slice(0, 8).toUpperCase();
         const recordStatus = duplicate.found ? "重複回覆・請確認" : "首次回覆";
 
         const row = [
@@ -98,17 +120,22 @@ function doPost(e) {
             phone,
             relationship,
             attendance,
+            ceremonyInvited,
+            ceremonyAttendance,
             invitationType,
+            digitalEmail,
             postalCode,
             address,
             adultCount,
             childCount,
             attendance === "出席" ? totalCount : "",
+            meatCount,
+            vegetarianCount,
             childTableware,
             childChair,
-            diet,
+            specialNeeds,
             blessing,
-            cleanValue(data.formVersion, 20) || "2.0",
+            cleanValue(data.formVersion, 20) || "5.0",
             cleanValue(data.source, 50) || "Wedding RSVP",
             cleanValue(data.clientSubmittedAt, 50)
         ];
@@ -154,8 +181,9 @@ function getPreparedSheet() {
 }
 
 function hasCurrentHeaders(sheet) {
-    const values = sheet.getRange(1, 1, 1, Math.min(sheet.getLastColumn(), HEADERS.length)).getDisplayValues()[0];
-    return values.length === HEADERS.length && HEADERS.every((header, index) => values[index] === header);
+    if (sheet.getLastColumn() !== HEADERS.length) return false;
+    const values = sheet.getRange(1, 1, 1, HEADERS.length).getDisplayValues()[0];
+    return HEADERS.every((header, index) => values[index] === header);
 }
 
 function createBackupName(spreadsheet) {
@@ -182,19 +210,22 @@ function formatSheet(sheet) {
         .setWrap(true);
 
     sheet.setFrozenRows(1);
-    sheet.setRowHeight(1, 42);
+    sheet.setFrozenColumns(5);
+    sheet.setRowHeight(1, 46);
     sheet.setColumnWidth(1, 145);
     sheet.setColumnWidth(2, 95);
     sheet.setColumnWidth(3, 135);
-    sheet.setColumnWidth(4, 180);
-    sheet.setColumnWidth(5, 105);
+    sheet.setColumnWidth(4, 190);
+    sheet.setColumnWidth(5, 110);
     sheet.setColumnWidth(6, 135);
-    sheet.setColumnWidths(7, 3, 105);
-    sheet.setColumnWidth(10, 90);
-    sheet.setColumnWidth(11, 260);
-    sheet.setColumnWidths(12, 6, 100);
-    sheet.setColumnWidth(18, 320);
-    sheet.setColumnWidths(19, 3, 135);
+    sheet.setColumnWidths(7, 5, 105);
+    sheet.setColumnWidth(12, 220);
+    sheet.setColumnWidth(13, 90);
+    sheet.setColumnWidth(14, 280);
+    sheet.setColumnWidths(15, 7, 100);
+    sheet.setColumnWidth(22, 300);
+    sheet.setColumnWidth(23, 320);
+    sheet.setColumnWidths(24, 3, 145);
     sheet.getRange("A:A").setNumberFormat("yyyy/mm/dd hh:mm:ss");
     refreshFilter(sheet);
 }
@@ -209,9 +240,9 @@ function formatLatestRow(sheet) {
         .setVerticalAlignment("middle")
         .setWrap(true);
 
-    sheet.getRange(rowNumber, 1, 1, 17).setHorizontalAlignment("center");
-    sheet.getRange(rowNumber, 11).setHorizontalAlignment("left");
-    sheet.getRange(rowNumber, 18).setHorizontalAlignment("left");
+    sheet.getRange(rowNumber, 1, 1, 21).setHorizontalAlignment("center");
+    sheet.getRange(rowNumber, 14).setHorizontalAlignment("left");
+    sheet.getRange(rowNumber, 22, 1, 2).setHorizontalAlignment("left");
     sheet.getRange(rowNumber, 1).setNumberFormat("yyyy/mm/dd hh:mm:ss");
 
     if (sheet.getRange(rowNumber, 3).getDisplayValue().includes("重複")) {
@@ -255,31 +286,58 @@ function findDuplicate(sheet, name, phone) {
     return { found: false, description: "" };
 }
 
-function validateBaseFields({ name, relationship, attendance }) {
-    if (!name) throw new Error("姓名不可空白");
-    if (!["男方親友", "女方親友"].includes(relationship)) throw new Error("與新人的關係格式錯誤");
-    if (!["出席", "不出席"].includes(attendance)) throw new Error("出席意願格式錯誤");
+function validateBaseFields(fields) {
+    if (!fields.name) throw new Error("姓名不可空白");
+    if (!["男方親友", "女方親友"].includes(fields.relationship)) {
+        throw new Error("與新人的關係格式錯誤");
+    }
+    if (!["出席", "不出席"].includes(fields.attendance)) {
+        throw new Error("出席意願格式錯誤");
+    }
+    if (fields.ceremonyInvited === "是" && !["參加儀式", "不參加儀式"].includes(fields.ceremonyAttendance)) {
+        throw new Error("請填寫證婚儀式出席意願");
+    }
 }
 
 function validateAttendingFields(fields) {
-    if (!["紙本喜帖", "數位喜帖"].includes(fields.invitationType)) throw new Error("喜帖形式格式錯誤");
+    if (!["紙本喜帖", "數位喜帖"].includes(fields.invitationType)) {
+        throw new Error("喜帖形式格式錯誤");
+    }
     if (fields.invitationType === "紙本喜帖" && (!fields.postalCode || !fields.address)) {
         throw new Error("紙本喜帖需要郵遞區號與寄送地址");
     }
-    if (fields.totalCount < 1) throw new Error("出席總人數至少需要 1 位");
+    if (fields.invitationType === "數位喜帖" && !isValidEmail(fields.digitalEmail)) {
+        throw new Error("請填寫正確的數位喜帖 Email");
+    }
+    if (fields.totalCount < 1) {
+        throw new Error("出席總人數至少需要 1 位");
+    }
+    if (fields.adultCount === "" || fields.childCount === "" || fields.vegetarianCount === "") {
+        throw new Error("請完整填寫大人、小孩與素食人數");
+    }
+    if (Number(fields.vegetarianCount) > Number(fields.adultCount)) {
+        throw new Error("素食人數不能大於大人人數");
+    }
+    if (Number(fields.meatCount) < 0) {
+        throw new Error("大人餐點人數格式錯誤");
+    }
     if (fields.childCount > 0 && (fields.childTableware === "" || fields.childChair === "")) {
         throw new Error("請填寫兒童餐具與座椅數量");
     }
-    if (Number(fields.childTableware || 0) > Number(fields.childCount) || Number(fields.childChair || 0) > Number(fields.childCount)) {
+    if (
+        Number(fields.childTableware || 0) > Number(fields.childCount) ||
+        Number(fields.childChair || 0) > Number(fields.childCount)
+    ) {
         throw new Error("兒童餐具與座椅數量不能大於小孩人數");
     }
-    if (!["葷食", "素食"].includes(fields.diet)) throw new Error("飲食習慣格式錯誤");
 }
 
 function toCount(value) {
     if (value === undefined || value === null || value === "") return "";
     const number = Number(value);
-    if (!Number.isInteger(number) || number < 0 || number > 20) throw new Error("人數或數量格式錯誤");
+    if (!Number.isInteger(number) || number < 0 || number > 10) {
+        throw new Error("人數或數量格式錯誤");
+    }
     return number;
 }
 
@@ -291,9 +349,20 @@ function cleanValue(value, maxLength) {
 function normalizeSubmittedPhone(value) {
     let phone = String(value || "").trim().replace(/[\s-]/g, "");
     if (!phone) return "";
-    if (!/^(?:09\d{8}|\+8869\d{8})$/.test(phone)) throw new Error("聯絡手機格式錯誤");
+    if (!/^(?:09\d{8}|\+8869\d{8})$/.test(phone)) {
+        throw new Error("聯絡手機格式錯誤");
+    }
     if (phone.startsWith("+886")) phone = `0${phone.slice(4)}`;
     return phone;
+}
+
+function normalizeResponseId(value) {
+    const id = String(value || "").trim().toUpperCase();
+    return /^[A-Z0-9]{8}$/.test(id) ? id : "";
+}
+
+function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || ""));
 }
 
 function normalize(value) {
