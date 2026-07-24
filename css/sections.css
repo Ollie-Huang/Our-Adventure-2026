@@ -271,17 +271,20 @@
 }
 
 .ceremony-mark {
-    display: grid;
+    display: flex;
     width: 52px;
     height: 52px;
     flex: 0 0 auto;
-    place-items: center;
+    padding-bottom: 0.12em;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     background: var(--white);
     color: var(--sun);
     font-family: var(--font-body);
     font-size: 1.35rem;
     font-style: normal;
+    line-height: 1;
     box-shadow: 0 8px 22px rgba(93, 79, 65, 0.1);
 }
 

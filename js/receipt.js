@@ -21,11 +21,17 @@ window.RSVPReceipt = (() => {
             rows.push(["大人餐點", `葷食 ${data.meatCount} 位・素食 ${data.vegetarianCount} 位`]);
             rows.push(["喜帖形式", data.invitationType]);
 
-            if (String(data.invitationType).includes("紙本")) {
+            const hasPaperDetails = Boolean(
+                String(data.postalCode || "").trim() ||
+                String(data.address || "").trim()
+            );
+            const hasDigitalDetails = Boolean(String(data.digitalEmail || "").trim());
+
+            if (String(data.invitationType).includes("紙本") || hasPaperDetails) {
                 rows.push(["紙本寄送地址", `${data.postalCode || ""} ${data.address || ""}`.trim()]);
             }
 
-            if (String(data.invitationType).includes("數位")) {
+            if (String(data.invitationType).includes("數位") || hasDigitalDetails) {
                 rows.push(["數位喜帖 Email", data.digitalEmail]);
             }
 

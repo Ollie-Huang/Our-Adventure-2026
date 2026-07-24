@@ -1,4 +1,4 @@
-Google Apps Script v5.2 更新步驟
+Google Apps Script v5.3 更新步驟
 
 1. 開啟目前接收 RSVP 的 Google 試算表。
 2. 點「擴充功能」→「Apps Script」。
