@@ -175,10 +175,9 @@ window.RSVPReceipt = (() => {
             throw new Error("無法產生回覆圖片");
         }
 
-        const safeName = String(data.name || "賓客").replace(/[\\/:*?"<>|]/g, "");
         receiptFile = new File(
             [blob],
-            `婚禮回覆_${safeName}_${data.responseId}.png`,
+            "婚禮回覆_黃冠禎&李玟慧.png",
             { type: "image/png" }
         );
 

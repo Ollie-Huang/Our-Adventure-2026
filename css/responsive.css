@@ -299,19 +299,8 @@
     }
 
     .ceremony-mark {
-        width: 42px;
-        height: 42px;
-    }
-
-    .ceremony-rings {
-        width: 27px;
-        height: 18px;
-    }
-
-    .ceremony-rings::before,
-    .ceremony-rings::after {
-        width: 13px;
-        height: 13px;
+        width: 62px;
+        height: 58px;
     }
 
     .ceremony-details small {

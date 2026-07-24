@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.set("responseId", responseId);
         formData.set("meatCount", String(meatCount));
         formData.set("clientSubmittedAt", new Date().toISOString());
-        formData.set("formVersion", "5.4");
+        formData.set("formVersion", "5.5");
         formData.set("source", "GitHub Pages");
 
         /*
