@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateInvitationFields() {
         const isAttending = selectedValue("attendance") === "出席";
         const invitationType = selectedValue("invitationType");
-        const needsPaper = invitationType === "紙本喜帖";
-        const needsDigital = invitationType === "數位喜帖";
+        const needsPaper = ["紙本喜帖", "紙本＋數位"].includes(invitationType);
+        const needsDigital = ["數位喜帖", "紙本＋數位"].includes(invitationType);
 
         setPanelState(paperPanel, isAttending && needsPaper);
         setPanelState(digitalPanel, isAttending && needsDigital);

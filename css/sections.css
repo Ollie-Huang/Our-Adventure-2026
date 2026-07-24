@@ -279,9 +279,9 @@
     border-radius: 50%;
     background: var(--white);
     color: var(--sun);
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-style: italic;
+    font-family: var(--font-body);
+    font-size: 1.35rem;
+    font-style: normal;
     box-shadow: 0 8px 22px rgba(93, 79, 65, 0.1);
 }
 
@@ -352,7 +352,7 @@
 }
 
 #transportation h2 {
-    font-family: var(--font-elegant);
+    font-family: var(--font-body);
     font-size: clamp(2rem, 5vw, 2.9rem);
 }
 
@@ -411,7 +411,7 @@
 }
 
 #rsvp h2 {
-    font-family: var(--font-elegant);
+    font-family: var(--font-body);
     font-size: clamp(2rem, 5vw, 2.9rem);
 }
 

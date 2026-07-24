@@ -11,8 +11,8 @@ const HEADERS = [
     "聯絡手機（選填）",
     "與新人關係",
     "婚宴出席",
-    "儀式受邀",
-    "儀式出席",
+    "訂婚儀式受邀",
+    "訂婚儀式出席",
     "喜帖形式",
     "數位喜帖 Email",
     "郵遞區號",
@@ -135,7 +135,7 @@ function doPost(e) {
             childChair,
             specialNeeds,
             blessing,
-            cleanValue(data.formVersion, 20) || "5.1",
+            cleanValue(data.formVersion, 20) || "5.2",
             cleanValue(data.source, 50) || "Wedding RSVP",
             cleanValue(data.clientSubmittedAt, 50)
         ];
@@ -210,7 +210,7 @@ function formatSheet(sheet) {
         .setWrap(true);
 
     sheet.setFrozenRows(1);
-    sheet.setFrozenColumns(5);
+    sheet.setFrozenColumns(0);
     sheet.setRowHeight(1, 46);
     sheet.setColumnWidth(1, 145);
     sheet.setColumnWidth(2, 95);
@@ -292,21 +292,27 @@ function validateBaseFields(fields) {
         throw new Error("與新人的關係格式錯誤");
     }
     if (!["出席", "不出席"].includes(fields.attendance)) {
-        throw new Error("出席意願格式錯誤");
+        throw new Error("婚宴出席意願格式錯誤");
     }
-    if (fields.ceremonyInvited === "是" && !["參加儀式", "不參加儀式"].includes(fields.ceremonyAttendance)) {
-        throw new Error("請填寫證婚儀式出席意願");
+    if (
+        fields.ceremonyInvited === "是" &&
+        !["參加訂婚儀式", "不參加訂婚儀式"].includes(fields.ceremonyAttendance)
+    ) {
+        throw new Error("請填寫訂婚儀式出席意願");
     }
 }
 
 function validateAttendingFields(fields) {
-    if (!["紙本喜帖", "數位喜帖"].includes(fields.invitationType)) {
+    if (!["紙本喜帖", "數位喜帖", "紙本＋數位"].includes(fields.invitationType)) {
         throw new Error("喜帖形式格式錯誤");
     }
-    if (fields.invitationType === "紙本喜帖" && (!fields.postalCode || !fields.address)) {
+    const wantsPaper = ["紙本喜帖", "紙本＋數位"].includes(fields.invitationType);
+    const wantsDigital = ["數位喜帖", "紙本＋數位"].includes(fields.invitationType);
+
+    if (wantsPaper && (!fields.postalCode || !fields.address)) {
         throw new Error("紙本喜帖需要郵遞區號與寄送地址");
     }
-    if (fields.invitationType === "數位喜帖" && !isValidEmail(fields.digitalEmail)) {
+    if (wantsDigital && !isValidEmail(fields.digitalEmail)) {
         throw new Error("請填寫正確的數位喜帖 Email");
     }
     if (fields.totalCount < 1) {

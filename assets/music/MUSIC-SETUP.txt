@@ -1,0 +1,21 @@
+背景音樂設定
+
+1. 到 Pixabay Music 選擇柔和、浪漫的鋼琴純音樂：
+   https://pixabay.com/music/search/wedding%20piano%20background/
+
+2. 建議優先選擇沒有標示 Content ID Registered 的曲目。
+
+3. 下載 MP3 後，將檔名改為：
+   wedding-background.mp3
+
+4. 把檔案放在本資料夾：
+   assets/music/wedding-background.mp3
+
+5. 網站會自動顯示右下角的「播放音樂」按鈕。
+
+注意：
+- 手機、iPad、電腦共用同一個音樂檔與播放器，不需要分別設定。
+- 瀏覽器通常不允許有聲音的自動播放，所以賓客需要按一次播放按鈕。
+- 請保留原始下載網址、下載日期與授權頁截圖，作為使用授權紀錄。
+- Pixabay Content License：
+  https://pixabay.com/service/license-summary/
