@@ -301,7 +301,17 @@
     .ceremony-mark {
         width: 42px;
         height: 42px;
-        font-size: 1.25rem;
+    }
+
+    .ceremony-rings {
+        width: 27px;
+        height: 18px;
+    }
+
+    .ceremony-rings::before,
+    .ceremony-rings::after {
+        width: 13px;
+        height: 13px;
     }
 
     .ceremony-details small {

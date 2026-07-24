@@ -135,7 +135,7 @@ function doPost(e) {
             childChair,
             specialNeeds,
             blessing,
-            cleanValue(data.formVersion, 20) || "5.3",
+            cleanValue(data.formVersion, 20) || "5.4",
             cleanValue(data.source, 50) || "Wedding RSVP",
             cleanValue(data.clientSubmittedAt, 50)
         ];

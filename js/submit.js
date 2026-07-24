@@ -180,10 +180,31 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.set("responseId", responseId);
         formData.set("meatCount", String(meatCount));
         formData.set("clientSubmittedAt", new Date().toISOString());
-        formData.set("formVersion", "5.3");
+        formData.set("formVersion", "5.4");
         formData.set("source", "GitHub Pages");
 
-        const receiptData = Object.fromEntries(formData.entries());
+        /*
+         * 收據直接讀取畫面上的喜帖欄位。
+         * 不依賴欄位是否曾被進階問題切換為 disabled，
+         * 避免紙本＋數位時 FormData 漏掉地址或 Email。
+         */
+        const invitationType =
+            form.querySelector('input[name="invitationType"]:checked')?.value || "";
+        const wantsPaperReceipt = invitationType.includes("紙本");
+        const wantsDigitalReceipt = invitationType.includes("數位");
+        const receiptData = {
+            ...Object.fromEntries(formData.entries()),
+            invitationType,
+            postalCode: wantsPaperReceipt
+                ? String(document.querySelector("#postal-code")?.value || "").trim()
+                : "",
+            address: wantsPaperReceipt
+                ? String(document.querySelector("#address")?.value || "").trim()
+                : "",
+            digitalEmail: wantsDigitalReceipt
+                ? String(document.querySelector("#digital-email")?.value || "").trim()
+                : ""
+        };
         setSubmitting(true);
 
         try {
