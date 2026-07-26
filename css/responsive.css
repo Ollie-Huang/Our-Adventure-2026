@@ -300,13 +300,8 @@
     }
 
     .ceremony-mark {
-        width: 52px;
-        height: 52px;
-    }
-
-    .ceremony-mark span {
-        font-size: 1.48rem;
-        transform: translate(-0.75px, -0.5px);
+        width: 62px;
+        height: 58px;
     }
 
     .ceremony-copy {
