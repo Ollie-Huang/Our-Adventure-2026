@@ -294,18 +294,23 @@
     .ceremony-details {
         margin-top: 18px;
         padding: 14px 16px;
-        gap: 12px;
+        grid-template-columns: 34% 66%;
+        gap: 0;
         border-radius: 14px;
     }
 
     .ceremony-mark {
-        width: 46px;
-        height: 46px;
+        width: 52px;
+        height: 52px;
     }
 
     .ceremony-mark span {
-        font-size: 1.25rem;
-        transform: translate(-1px, -0.5px);
+        font-size: 1.48rem;
+        transform: translate(-0.75px, -0.5px);
+    }
+
+    .ceremony-copy {
+        padding-left: 7px;
     }
 
     .ceremony-details small {
