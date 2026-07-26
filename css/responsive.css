@@ -299,8 +299,13 @@
     }
 
     .ceremony-mark {
-        width: 62px;
-        height: 58px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .ceremony-mark span {
+        font-size: 1.25rem;
+        transform: translate(-1px, -0.5px);
     }
 
     .ceremony-details small {
