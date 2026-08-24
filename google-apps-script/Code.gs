@@ -84,7 +84,7 @@ function doPost(e) {
             digitalEmail = cleanValue(data.digitalEmail, 120);
             postalCode = cleanValue(data.postalCode, 10);
             address = cleanValue(data.address, 150);
-            adultCount = toCount(data.adultCount);
+            adultCount = toCount(data.adultCount, 10);
             childCount = toCount(data.childCount);
             vegetarianCount = toCount(data.vegetarianCount);
             childTableware = toCount(data.childTableware);
@@ -338,10 +338,10 @@ function validateAttendingFields(fields) {
     }
 }
 
-function toCount(value) {
+function toCount(value, maximum = 6) {
     if (value === undefined || value === null || value === "") return "";
     const number = Number(value);
-    if (!Number.isInteger(number) || number < 0 || number > 6) {
+    if (!Number.isInteger(number) || number < 0 || number > maximum) {
         throw new Error("人數或數量格式錯誤");
     }
     return number;
