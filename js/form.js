@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const vegetarianCount = document.querySelector("#vegetarian-count");
     const mealSummary = document.querySelector("#meal-summary");
     const closedMessage = document.querySelector("#form-closed-message");
-    const deadline = new Date("2026-10-12T23:59:59+08:00");
+    const deadline = new Date("2026-09-25T23:59:59+08:00");
     const isCeremonyInvited = new URLSearchParams(window.location.search).get("ceremony") === CEREMONY_TOKEN;
 
     window.RSVP_DEADLINE = deadline;
